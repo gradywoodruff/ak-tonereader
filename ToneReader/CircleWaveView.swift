@@ -9,7 +9,7 @@
 import UIKit
 import AudioKitUI
 
-class CircleWaveView: EZAudioPlot {
+class CircleWaveView: AKOutputWaveformPlot {
     override func createPath(withPoints points: UnsafeMutablePointer<CGPoint>!, pointCount: UInt32, in rect: EZRect) -> Unmanaged<CGPath>! {
         let path = CGMutablePath()
         if pointCount > 0 {
@@ -35,7 +35,7 @@ class CircleWaveView: EZAudioPlot {
                 ///
                 /// NOTE: I'm trying to figure out whether it should be subtracting
                 /// 1023 or 1024 in this mirrorIndex equation
-                let mirrorIndex = (((Int(i) - 1) + mirrorAmount) - 1024) - 1
+                let mirrorIndex = (((Int(i) - 1) + mirrorAmount) - 1023) - 1
                 var radius: Double
                 
                 /// I don't think just adding 1 is how to solve this, but
